@@ -21,7 +21,7 @@ body {
 
 .color-chart.selected {
     border-width: 2px;
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
     transition: border-color 0.1s ease-in-out;
 }
 
@@ -35,7 +35,7 @@ body {
 #sidebar {
     vertical-align: top;
     display: inline-block;
-    height: 100vh;
+    height: calc(100% - 68px);
 }
 
 #side-tool-bar {
@@ -43,7 +43,7 @@ body {
 }
 
 #side-tool-bar {
-    padding-top: 5px;
+    padding-top: 8px;
     margin: 0;
     border: none;
     width: 50px;
@@ -51,6 +51,7 @@ body {
 
 #sidebar {
     padding: 5px;
+    padding-top: 8px;
     margin: 0;
     border: none;
     width: 180px;
@@ -59,5 +60,5 @@ body {
 #canvas {
     padding: 0;
     margin: 0;
-    border: none;    
+    border: none;
 }
