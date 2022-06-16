@@ -1,13 +1,18 @@
 'use strict';
 
 import colors from './colors.js';
+import sideToolbar from './sideToolbar.js';
+
 M.AutoInit();
 
 (function () {
-    const sideToolBar = document.querySelector('#side-tool-bar');
     const sidebar = document.querySelector('#sidebar');
     const canvas = document.querySelector('canvas');
     const canvasCtx = canvas.getContext('2d');
+    
+    const body = document.getElementsByTagName('body')[0];
+    body.insertBefore(sideToolbar.view, sidebar);
+    
     const foreColorPanel = document.querySelector('#fore-color-panel');
     let colorCharts = [];    
 
@@ -28,10 +33,10 @@ M.AutoInit();
         canvasCtx.stroke();
     }
 
-    canvasCtx.canvas.width = document.body.offsetWidth - (sideToolBar.offsetWidth + sidebar.offsetWidth + 30);
+    canvasCtx.canvas.width = document.body.offsetWidth - (sideToolbar.view.offsetWidth + sidebar.offsetWidth + 30);
     canvasCtx.canvas.height = document.body.offsetHeight - 68;    
 
-    foreColorPanel.style.backgroundColor = colors[0];
+    sideToolbar.setColor(colors[0]);
     colors.forEach(function (color, index) {
         var colorChart = document.createElement('div');
         colorChart.classList.add('card-panel');
@@ -43,7 +48,7 @@ M.AutoInit();
         colorChart.addEventListener('mousedown', function () {
             var self = this;
 
-            foreColorPanel.style.backgroundColor = color;
+            sideToolbar.setColor(color);
             canvasCtx.strokeStyle = color;
             colorCharts.forEach(function (colorChart) {
                 colorChart.classList.remove('selected');
